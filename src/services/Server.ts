@@ -1,6 +1,5 @@
 import Bun from 'bun'
 
-import CONFIG from '@/../CONFIG.json'
 import yoomoney from '@/routes/yoomoney'
 
 import { Update } from '@grammyjs/conversations/out/deps.node'
@@ -15,7 +14,7 @@ const BOTS_CACHE: Map<string, BotType> = new Map()
 
 const server = Bun.serve({
 	hostname: '127.0.0.1',
-	port: CONFIG.PORT ?? 3000,
+	port: Bun.env.PORT || 3000,
 
 	routes: {
 		'/api/test': async (req) => Response.json({ ok: true }, { status: 200 }),

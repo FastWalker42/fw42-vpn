@@ -1,4 +1,4 @@
-import CONFIG from '@/../CONFIG.json'
+import Bun from 'bun'
 import { createHash } from 'node:crypto'
 
 export default {
@@ -57,7 +57,7 @@ export default {
 				dt,
 				sender,
 				codepro ? 'true' : 'false',
-				CONFIG.YOOMONEY_SECRET,
+				Bun.env.YOOMONEY_SECRET,
 				label,
 			].join('&')
 			const calculated = createHash('sha1').update(hashString).digest('hex')
